@@ -4,417 +4,614 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gift A. Nwatuzie | Secure & Trustworthy AI</title>
-
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#0f1a2e;
-      --card:#111f38;
-      --text:#eaf0ff;
-      --muted:#a9b7d6;
-      --line:rgba(255,255,255,.10);
-      --accent:#4f7cff;
-      --accent2:#22c55e;
+      --bg:#f6f8fc;
+      --bg-soft:#eef3fb;
+      --surface:#ffffff;
+      --surface-2:#f9fbff;
+      --text:#162033;
+      --muted:#5f6f89;
+      --line:#dbe4f0;
+      --accent:#2251cc;
+      --accent-soft:#e9efff;
+      --shadow:0 18px 45px rgba(21, 39, 84, .08);
+      --radius:22px;
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
     body{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(1200px 700px at 12% 8%, rgba(79,124,255,.23), transparent 60%),
-        radial-gradient(900px 550px at 88% 18%, rgba(34,197,94,.14), transparent 60%),
-        var(--bg);
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      line-height:1.65;
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(34,81,204,.08), transparent 55%),
+        radial-gradient(700px 400px at 100% 10%, rgba(65,145,255,.10), transparent 50%),
+        linear-gradient(180deg, #f8fbff 0%, #f4f7fc 100%);
+      line-height:1.7;
     }
 
-    a{color:inherit;text-decoration:none}
-    a:hover{opacity:.9}
-    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
 
-    /* Topbar */
     .topbar{
-      position:sticky;top:0;z-index:50;
-      background: rgba(11,18,32,.70);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
+      position:sticky;top:0;z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(248,251,255,.84);
+      border-bottom:1px solid rgba(219,228,240,.9);
     }
     .topbar-inner{
-      height:70px;
-      display:flex;align-items:center;justify-content:space-between;
-      gap:14px;
+      min-height:76px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
     }
     .brand{
       display:flex;flex-direction:column;gap:2px;
-      font-weight:900;
-      letter-spacing:.2px;
     }
-    .brand small{color:var(--muted);font-weight:700;letter-spacing:.15px}
-    nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-    nav a{color:var(--muted);font-weight:800}
-    nav a:hover{color:var(--text)}
+    .brand strong{font-size:1.08rem;letter-spacing:.2px}
+    .brand span{color:var(--muted);font-size:.93rem;font-weight:600}
 
-    /* Buttons */
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 16px;border-radius:12px;
-      background:var(--accent);
-      color:white;font-weight:900;
-      border:1px solid transparent;
-      box-shadow:0 12px 30px rgba(79,124,255,.18);
+    .nav{
+      display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-outline{
-      background:transparent;
-      border-color:rgba(79,124,255,.7);
-      box-shadow:none;
-    }
-    .btn-small{padding:9px 12px;border-radius:10px}
-
-    /* Hero */
-    .hero{padding:54px 0 22px}
-    .hero-inner{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:20px;
-      align-items:stretch;
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 12px;border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+    .nav a{
       color:var(--muted);
-      font-weight:800;
+      font-weight:700;
+      font-size:.96rem;
     }
-    h1{margin:14px 0 8px;font-size:44px;line-height:1.12}
-    .subtitle{margin:0;color:var(--muted);font-weight:800;font-size:18px}
-    .lead{margin:14px 0 0;max-width:70ch;color:rgba(234,240,255,.92)}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 10px}
-    .meta-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;color:var(--muted);font-weight:800}
+    .nav a:hover{color:var(--accent)}
 
-    /* Cards */
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border-radius:18px;
-      padding:18px;
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 18px;border-radius:999px;border:1px solid transparent;
+      font-weight:800;transition:.25s ease;
     }
-    .profile{
-      display:flex;gap:14px;align-items:flex-start;
+    .btn-primary{
+      background:var(--accent);color:#fff;box-shadow:0 14px 28px rgba(34,81,204,.18);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{
+      border-color:var(--line);background:#fff;color:var(--text);
+    }
+    .btn-secondary:hover{border-color:#bfd0e7;background:var(--surface-2)}
+
+    .hero{padding:56px 0 34px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:stretch;
+    }
+    .hero-copy, .hero-side, .panel, .section-card, .timeline-item, .publication, .gallery-card{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(219,228,240,.95);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+    }
+    .hero-copy{padding:34px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+      background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.9rem;
+    }
+    h1{
+      margin:16px 0 10px;font-size:clamp(2.3rem, 5vw, 4.2rem);line-height:1.08;letter-spacing:-.03em;
+    }
+    .subtitle{
+      font-size:1.13rem;color:var(--muted);font-weight:700;margin:0 0 18px;
+    }
+    .lead{margin:0;max-width:68ch;color:#324258}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 20px}
+    .meta-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--muted);font-weight:700}
+    .meta-links a{color:var(--accent)}
+    .meta-links .sep{color:#a6b5ca}
+
+    .highlight-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;
+    }
+    .mini-stat{
+      background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:16px;
+    }
+    .mini-stat strong{display:block;font-size:1rem;margin-bottom:4px}
+    .mini-stat span{color:var(--muted);font-size:.95rem}
+
+    .hero-side{padding:22px}
+    .profile-top{
+      display:flex;gap:16px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);
     }
     .avatar{
-      width:92px;height:92px;border-radius:22px;
-      background:rgba(79,124,255,.18);
-      border:1px solid rgba(79,124,255,.35);
-      overflow:hidden;
-      flex:0 0 auto;
-      display:flex;align-items:center;justify-content:center;
-      font-weight:1000;font-size:24px;
+      width:110px;height:110px;border-radius:24px;overflow:hidden;flex:0 0 auto;
+      background:#dfe9ff;border:1px solid #cddaf8;
     }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .muted{color:var(--muted);margin:0}
-    .strong{margin:0;font-weight:900}
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;margin-top:14px;
-      padding-top:14px;border-top:1px solid var(--line);
+    .profile-title h2{margin:0 0 6px;font-size:1.3rem}
+    .profile-title p{margin:0;color:var(--muted)}
+    .quick-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .quick-info div{
+      background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:14px;
     }
+    .quick-info span{display:block;color:var(--muted);font-size:.88rem;margin-bottom:4px}
+    .quick-info strong{font-size:.98rem}
 
-    /* Sections */
-    .section{padding:44px 0;border-top:1px solid var(--line)}
-    .section.alt{background:rgba(255,255,255,.02)}
-    h2{margin:0 0 14px;font-size:24px}
-    .section p{margin:0 0 12px}
-    .section-text{color:var(--muted);max-width:90ch}
+    .section{padding:26px 0}
+    .section-header{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:18px}
+    .section-header h2{margin:0;font-size:1.8rem}
+    .section-header p{margin:0;color:var(--muted);max-width:70ch}
+    .section-card{padding:28px}
 
-    /* Tags */
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
     .chip{
-      padding:9px 12px;border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      font-weight:900;font-size:14px;
+      padding:10px 14px;border-radius:999px;background:var(--surface-2);
+      border:1px solid var(--line);font-weight:800;color:#385071;font-size:.93rem;
     }
 
-    /* Grids */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      margin-top:14px;
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .panel{padding:22px}
+    .panel h3{margin:0 0 10px;font-size:1.08rem}
+    .panel p{margin:0;color:var(--muted)}
+
+    .timeline{display:grid;gap:14px}
+    .timeline-item{padding:20px}
+    .timeline-item h3{margin:0 0 6px;font-size:1.04rem}
+    .timeline-item .meta{color:var(--accent);font-weight:800;font-size:.95rem;margin-bottom:6px}
+    .timeline-item p{margin:0;color:var(--muted)}
+
+    .publication-list{display:grid;gap:14px}
+    .publication{padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+    .publication .mark{
+      width:12px;height:12px;border-radius:999px;background:var(--accent);margin-top:8px;flex:0 0 auto;
+      box-shadow:0 0 0 6px rgba(34,81,204,.10);
     }
-    .item h3{margin:0 0 6px;font-size:16px}
-    .item p{margin:0;color:var(--muted)}
-    .list{
-      display:grid;
-      gap:10px;
-      margin-top:12px;
+    .publication strong{display:block;margin-bottom:4px}
+    .publication span{color:var(--muted)}
+
+    .gallery-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .gallery-card{padding:22px}
+    .slider{
+      position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+      background:linear-gradient(135deg,#eef4ff,#f8fbff);
+      min-height:340px;
     }
-    .pub{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+    .slide{display:none;min-height:340px;position:relative}
+    .slide.active{display:block}
+    .slide img{width:100%;height:340px;object-fit:cover}
+    .slide-placeholder{
+      min-height:340px;display:grid;place-items:center;padding:26px;text-align:center;color:var(--muted);
+      background:linear-gradient(135deg, rgba(34,81,204,.08), rgba(255,255,255,.96));
     }
+    .slide-caption{
+      position:absolute;left:18px;bottom:18px;right:18px;
+      background:rgba(22,32,51,.68);color:#fff;padding:12px 14px;border-radius:14px;font-weight:700;
+      backdrop-filter:blur(6px);
+    }
+    .slider-controls{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;
+    }
+    .slider-buttons{display:flex;gap:10px}
+    .slider-buttons button{
+      width:42px;height:42px;border:none;border-radius:999px;background:#fff;border:1px solid var(--line);
+      font-size:1rem;cursor:pointer;color:var(--text);
+    }
+    .slider-buttons button:hover{background:var(--surface-2)}
+    .dots{display:flex;gap:8px;align-items:center}
     .dot{
-      width:10px;height:10px;margin-top:7px;border-radius:999px;background:var(--accent2);
-      flex:0 0 auto;
+      width:10px;height:10px;border-radius:999px;background:#c3d0e2;cursor:pointer;
     }
-    .pub strong{display:block;margin-bottom:2px}
-    .pub span{color:var(--muted)}
+    .dot.active{background:var(--accent)}
 
-    /* Footer */
-    .footer{padding:28px 0;border-top:1px solid var(--line)}
-    .footer p{margin:0;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .contact-item{
+      background:var(--surface-2);border:1px solid var(--line);border-radius:18px;padding:18px;
+    }
+    .contact-item h3{margin:0 0 8px;font-size:1rem}
+    .contact-item p, .contact-item a{margin:0;color:var(--muted);word-break:break-word}
 
-    @media (max-width: 950px){
-      .hero-inner{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      h1{font-size:36px}
+    footer{padding:30px 0 46px;color:var(--muted)}
+    .footer-inner{
+      display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;
+      border-top:1px solid var(--line);padding-top:20px;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,.gallery-wrap,.two-col,.cards-3,.contact-grid{grid-template-columns:1fr}
+      .highlight-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 760px){
+      .topbar-inner{padding:10px 0;align-items:flex-start;flex-direction:column}
+      .nav{gap:12px}
+      .hero{padding-top:34px}
+      .hero-copy,.hero-side,.section-card{padding:22px}
+      .quick-info{grid-template-columns:1fr}
+      .profile-top{align-items:flex-start}
+      .avatar{width:92px;height:92px}
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        Gift A. Nwatuzie
-        <small>Secure & Trustworthy AI • Federated Learning • Privacy-Preserving ML</small>
+        <strong>Gift A. Nwatuzie</strong>
+        <span>Secure & Trustworthy AI • Federated Learning • Privacy-Preserving ML</span>
       </div>
-
-      <nav>
+      <nav class="nav">
         <a href="#about">About</a>
         <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#service">Service</a>
-        <a href="#contact" class="btn btn-small">Contact</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <span class="badge">📍 Kent, Ohio, USA • Kent State University</span>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Kent State University • Kent, Ohio, USA</div>
           <h1>Gift A. Nwatuzie</h1>
-          <p class="subtitle">Ph.D. Candidate (Computer Science) • Secure & Trustworthy AI Researcher</p>
-
+          <p class="subtitle">Ph.D. Candidate in Computer Science • Researcher in Secure and Trustworthy AI</p>
           <p class="lead">
-            I work on secure and trustworthy AI systems—federated learning, privacy-preserving machine learning,
-            and responsible AI (fairness, transparency, explainability). My goal is to build scalable AI architectures
-            that protect sensitive data while delivering reliable, interpretable, and ethically grounded outcomes in
-            healthcare, cybersecurity, and decision support.
+            I design secure, privacy-preserving, and trustworthy AI systems with emphasis on federated learning,
+            responsible AI, fairness, transparency, and scalable software architectures for healthcare, cybersecurity,
+            and intelligent decision support.
           </p>
 
-          <div class="actions">
-            <a class="btn" href="resumeA.pdf" target="_blank" rel="noreferrer">Download CV/Resume</a>
-            <a class="btn btn-outline" href="mailto:gnwatuzi@kent.edu">Email Me</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="CV.pdf" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="btn btn-secondary" href="mailto:gnwatuzi@kent.edu">Email Me</a>
           </div>
 
           <div class="meta-links">
             <a href="https://linkedin.com/in/gift-nwatuzie-08696579" target="_blank" rel="noreferrer">LinkedIn</a>
-            <span>•</span>
+            <span class="sep">•</span>
             <a href="https://researchgate.net/profile/Gift-Nwatuzie" target="_blank" rel="noreferrer">ResearchGate</a>
-            <span>•</span>
-            <a href="#" target="_blank" rel="noreferrer">Google Scholar (add link)</a>
+            <span class="sep">•</span>
+            <a href="#">Google Scholar</a>
           </div>
 
+          <div class="highlight-grid">
+            <div class="mini-stat">
+              <strong>Ph.D. in Computer Science</strong>
+              <span>Expected May 2026</span>
+            </div>
+            <div class="mini-stat">
+              <strong>GPA 3.71 / 4.00</strong>
+              <span>Kent State University</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Teaching & Research</strong>
+              <span>Graduate Teaching Assistant since 2022</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="profile-top">
+            <div class="avatar">
+              <img src="IMG_3153.jpeg" alt="Gift A. Nwatuzie profile photo" />
+            </div>
+            <div class="profile-title">
+              <h2>Professional Profile</h2>
+              <p>Secure AI, Federated Learning, Responsible AI, and Privacy-Preserving Systems</p>
+            </div>
+          </div>
+
+          <div class="quick-info">
+            <div>
+              <span>Email</span>
+              <strong>gnwatuzi@kent.edu</strong>
+            </div>
+            <div>
+              <span>Phone</span>
+              <strong>+1 (206) 291-3094</strong>
+            </div>
+            <div>
+              <span>Affiliation</span>
+              <strong>Kent State University</strong>
+            </div>
+            <div>
+              <span>Research Focus</span>
+              <strong>Trustworthy AI Systems</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>About</h2>
+            <p>A cleaner and more professional profile layout focused on readability, academic positioning, and discoverability.</p>
+          </div>
+        </div>
+        <div class="section-card">
+          <p>
+            I am a Ph.D. Candidate in Computer Science at Kent State University. My work focuses on secure and trustworthy
+            AI systems, including federated learning, privacy-preserving machine learning, fairness-aware modeling,
+            transparency, and explainability. I am particularly interested in building reliable AI systems for healthcare,
+            cybersecurity, and distributed decision-making environments.
+          </p>
+          <p>
+            Beyond research, I contribute to undergraduate instruction through programming labs, mentoring, assessments,
+            and student support. I also bring software engineering experience spanning backend development, secure systems,
+            and scalable AI-oriented architectures.
+          </p>
           <div class="chips">
             <span class="chip">Federated Learning</span>
             <span class="chip">Privacy-Preserving AI</span>
             <span class="chip">Explainable AI</span>
-            <span class="chip">Responsible AI</span>
-            <span class="chip">Secure AI Systems</span>
+            <span class="chip">Fairness & Transparency</span>
             <span class="chip">Cybersecurity</span>
+            <span class="chip">Secure Software Engineering</span>
+            <span class="chip">Quantum-Enhanced Learning</span>
+            <span class="chip">Healthcare AI</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- PROFILE CARD -->
-        <div class="card profile">
-          <div class="avatar">
-            <!-- Upload your photo in the repo as profile.jpg -->
-            <img src="IMG_3153.jpeg" alt="Profile photo" />
-          </div>
-
+    <section id="research" class="section">
+      <div class="container">
+        <div class="section-header">
           <div>
-            <p class="muted">Affiliation</p>
-            <p class="strong">Kent State University</p>
-            <p class="muted" style="margin-top:10px;">Program</p>
-            <p class="strong">Ph.D. in Computer Science (Expected May 2026)</p>
-
-            <div class="split">
-              <div>
-                <p class="muted">Email</p>
-                <p class="strong">gnwatuzi@kent.edu</p>
-              </div>
-              <div>
-                <p class="muted">Focus</p>
-                <p class="strong">Trustworthy AI</p>
-              </div>
-            </div>
+            <h2>Research Areas</h2>
+            <p>Core directions aligned with the research interests and manuscripts highlighted in the CV.</p>
           </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About</h2>
-        <p class="section-text">
-          I am a Ph.D. Candidate in Computer Science at Kent State University (Expected May 2026).
-          My research centers on secure and trustworthy AI, with emphasis on federated learning for distributed
-          settings, privacy-preserving learning, and responsible AI practices that mitigate bias while improving
-          transparency and interpretability.
-        </p>
-        <p class="section-text">
-          I also serve as a Graduate Teaching Assistant, supporting undergraduate instruction in programming labs
-          and mentoring students through hands-on learning and assessments.
-        </p>
-      </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research" class="section alt">
-      <div class="container">
-        <h2>Research</h2>
-        <p class="section-text">
-          My work spans privacy-preserving AI architectures, secure distributed learning, and trustworthy evaluation
-          frameworks for fairness and explainability.
-        </p>
-
-        <div class="grid">
-          <div class="card item">
-            <h3>Trustworthy Federated Learning Frameworks</h3>
-            <p>Secure federated learning designs for sensitive domains such as healthcare and cross-organization collaboration.</p>
-          </div>
-
-          <div class="card item">
+        <div class="cards-3">
+          <article class="panel">
+            <h3>Secure Federated Learning</h3>
+            <p>Architectures for privacy-preserving collaboration across distributed nodes, especially in healthcare and sensitive-data environments.</p>
+          </article>
+          <article class="panel">
+            <h3>Responsible and Explainable AI</h3>
+            <p>Fairness-aware and interpretable methods that improve reliability, auditability, and transparency in AI systems.</p>
+          </article>
+          <article class="panel">
             <h3>Quantum-Enhanced Cybersecurity</h3>
-            <p>Decision support and intrusion detection models that explore quantum/edge-enhanced learning concepts.</p>
-          </div>
+            <p>Hybrid AI approaches for intrusion detection, anomaly detection, and secure decision support under emerging threat models.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <div class="card item">
-            <h3>Responsible & Explainable AI</h3>
-            <p>Fairness-aware modeling and explainability methods to improve reliability, transparency, and trust.</p>
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Experience</h2>
+            <p>Academic, research, and professional experience presented in a more polished, recruiter-friendly format.</p>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="meta">Jan 2022 – Present</div>
+              <h3>Graduate Teaching Assistant • Kent State University</h3>
+              <p>Teach and grade CS1 labs, mentor students in core programming and algorithmic thinking, and support learning through office hours and feedback.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="meta">2024 – Present</div>
+              <h3>Graduate Hourly Employee Coordinator • Kent State University</h3>
+              <p>Support student employees, coordinate operations, and facilitate communication for effective departmental workflows.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="meta">Mar 2022 – Sep 2022</div>
+              <h3>Software Engineering Fellow • Coding Expert Bootcamp</h3>
+              <p>Led design of a bias-aware recommendation engine using explainable AI and ethical constraints while mentoring junior fellows.</p>
+            </article>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="meta">May 2019 – Present</div>
+              <h3>Software Engineer (Remote) • Tech Nova Solutions</h3>
+              <p>Develop distributed backend features, optimize performance, and contribute to cross-functional software delivery and CI/CD workflows.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="meta">Jan 2020 – Feb 2021</div>
+              <h3>Software Engineer • Trendsville / Pack Media Ltd</h3>
+              <p>Built secure backend systems, improved scalability, and integrated bias detection and explainability into internal tools.</p>
+            </article>
+            <article class="timeline-item">
+              <div class="meta">Jan 2016 – Dec 2019</div>
+              <h3>Software Engineer • Civil Service Commission</h3>
+              <p>Automated public-sector workflows, strengthened reliability and compliance, and mentored junior developers.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
     <section id="publications" class="section">
       <div class="container">
-        <h2>Publications & Manuscripts</h2>
-        <p class="section-text">
-          Selected works (add links/DOIs when available).
-        </p>
-
-        <div class="list">
-          <div class="pub">
-            <div class="dot"></div>
-            <div>
-              <strong>Deep Learning-Based Data Recovery System for Network Monitoring</strong>
-              <span>Research publication/accepted work (year per CV).</span>
-            </div>
+        <div class="section-header">
+          <div>
+            <h2>Selected Publications & Research</h2>
+            <p>You can later replace placeholder text with DOI links, PDFs, or publication landing pages.</p>
           </div>
-
-          <div class="pub">
-            <div class="dot"></div>
+        </div>
+        <div class="publication-list">
+          <article class="publication">
+            <div class="mark"></div>
             <div>
               <strong>A Framework for Integration of Machine Vision with IoT Sensing</strong>
-              <span>Research publication/accepted work (year per CV).</span>
+              <span>Sensors, 2025.</span>
+            </div>
+          </article>
+          <article class="publication">
+            <div class="mark"></div>
+            <div>
+              <strong>Quantum-Enhanced Intrusion Detection: A Novel Hybrid Approach Using Quantum Deep Learning</strong>
+              <span>Conference publication, 2025.</span>
+            </div>
+          </article>
+          <article class="publication">
+            <div class="mark"></div>
+            <div>
+              <strong>DRNMS: An Enhanced Deep Learning-Based System for Data Recovery and Anomaly Detection in Network Monitoring</strong>
+              <span>Springer conference proceedings, 2024.</span>
+            </div>
+          </article>
+          <article class="publication">
+            <div class="mark"></div>
+            <div>
+              <strong>Federated Learning for Healthcare Secure Data Sharing</strong>
+              <span>Research manuscript / journal submission.</span>
+            </div>
+          </article>
+          <article class="publication">
+            <div class="mark"></div>
+            <div>
+              <strong>FairAudit: A Causal Explanation Framework for Diagnosing and Mitigating Intersectional Bias</strong>
+              <span>Research manuscript / ongoing work.</span>
+            </div>
+          </article>
+          <article class="publication">
+            <div class="mark"></div>
+            <div>
+              <strong>Zero-Knowledge Proofs for Trustless Data Provenance in Multi-Modal AI Pipelines</strong>
+              <span>Research manuscript / ongoing work.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Gallery</h2>
+            <p>This section is already prepared for your future picture slideshow. You only need to upload your images later.</p>
+          </div>
+        </div>
+        <div class="gallery-wrap">
+          <div class="gallery-card">
+            <div class="slider" id="slider">
+              <div class="slide active">
+                <div class="slide-placeholder">
+                  <div>
+                    <h3 style="margin:0 0 10px; color: var(--text);">Professional Photo Slideshow</h3>
+                    <p style="margin:0; max-width: 520px;">Upload your photos later and replace these placeholders with your images. This slider already supports automatic and manual navigation.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <img src="gallery-1.jpg" alt="Conference or professional event photo" />
+                <div class="slide-caption">Sample caption: conference presentation, award, lab activity, or professional portrait.</div>
+              </div>
+              <div class="slide">
+                <img src="gallery-2.jpg" alt="Research or academic activity photo" />
+                <div class="slide-caption">Sample caption: teaching, research session, workshop, or networking moment.</div>
+              </div>
+            </div>
+            <div class="slider-controls">
+              <div class="slider-buttons">
+                <button type="button" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+                <button type="button" id="nextBtn" aria-label="Next slide">&#8594;</button>
+              </div>
+              <div class="dots" id="dots"></div>
             </div>
           </div>
-
-          <div class="pub">
-            <div class="dot"></div>
-            <div>
-              <strong>Federated Learning Frameworks for Secure Healthcare Data Sharing</strong>
-              <span>Manuscript / ongoing research.</span>
-            </div>
-          </div>
-
-          <div class="pub">
-            <div class="dot"></div>
-            <div>
-              <strong>Privacy-Preserving and Trustworthy AI Architectures</strong>
-              <span>Ongoing research and system design.</span>
-            </div>
+          <div class="gallery-card">
+            <h3 style="margin-top:0;">How to add your pictures later</h3>
+            <ol style="padding-left:20px; color: var(--muted); margin:0;">
+              <li>Upload your images into the same GitHub repository as <strong>index.html</strong>.</li>
+              <li>Name them clearly, for example: <strong>gallery-1.jpg</strong>, <strong>gallery-2.jpg</strong>, <strong>gallery-3.jpg</strong>.</li>
+              <li>Replace the sample image names in the code with your actual filenames.</li>
+              <li>Update each slide caption to match the photo.</li>
+            </ol>
+            <p style="margin:18px 0 0; color:var(--muted);">
+              I also kept the background lighter and cleaner so the page remains readable, professional, and easier for visitors to navigate.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TEACHING -->
-    <section id="teaching" class="section alt">
+    <section id="contact" class="section">
       <div class="container">
-        <h2>Teaching</h2>
-        <p class="section-text">
-          Graduate Teaching Assistant — supported undergraduate programming labs (CS1) through mentoring, grading,
-          and hands-on assistance with core programming concepts.
-        </p>
-      </div>
-    </section>
-
-    <!-- SERVICE -->
-    <section id="service" class="section">
-      <div class="container">
-        <h2>Service & Leadership</h2>
-        <p class="section-text">
-          Community and academic service through mentoring, collaboration, and research support activities.
-          (You can add committees, reviewing, volunteering, or professional memberships here.)
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section alt">
-      <div class="container">
-        <h2>Contact</h2>
-
-        <div class="grid">
-          <div class="card item">
-            <h3>Email</h3>
-            <p><a href="mailto:gnwatuzi@kent.edu">gnwatuzi@kent.edu</a></p>
+        <div class="section-header">
+          <div>
+            <h2>Contact</h2>
+            <p>Simple contact options with a professional layout for academic and industry visibility.</p>
           </div>
-
-          <div class="card item">
-            <h3>LinkedIn</h3>
-            <p><a href="https://linkedin.com/in/gift-nwatuzie-08696579" target="_blank" rel="noreferrer">Open LinkedIn</a></p>
-          </div>
-
-          <div class="card item">
-            <h3>ResearchGate</h3>
-            <p><a href="https://researchgate.net/profile/Gift-Nwatuzie" target="_blank" rel="noreferrer">Open ResearchGate</a></p>
+        </div>
+        <div class="section-card">
+          <div class="contact-grid">
+            <div class="contact-item">
+              <h3>Email</h3>
+              <a href="mailto:gnwatuzi@kent.edu">gnwatuzi@kent.edu</a>
+            </div>
+            <div class="contact-item">
+              <h3>Phone</h3>
+              <p>+1 (206) 291-3094</p>
+            </div>
+            <div class="contact-item">
+              <h3>LinkedIn</h3>
+              <a href="https://linkedin.com/in/gift-nwatuzie-08696579" target="_blank" rel="noreferrer">View profile</a>
+            </div>
+            <div class="contact-item">
+              <h3>ResearchGate</h3>
+              <a href="https://researchgate.net/profile/Gift-Nwatuzie" target="_blank" rel="noreferrer">View profile</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container">
-        <p>© <span id="year"></span> Gift A. Nwatuzie</p>
-      </div>
-    </footer>
   </main>
 
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Gift A. Nwatuzie</span>
+      <span>Designed for a cleaner academic and professional web presence.</span>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsWrap = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+    let autoSlide;
+
+    function renderDots() {
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (index === currentSlide ? ' active' : '');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => showSlide(index));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function showSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      renderDots();
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    function startAutoSlide() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    prevBtn.addEventListener('click', () => { prevSlide(); startAutoSlide(); });
+    nextBtn.addEventListener('click', () => { nextSlide(); startAutoSlide(); });
+
+    renderDots();
+    startAutoSlide();
   </script>
 </body>
 </html>
-
-
