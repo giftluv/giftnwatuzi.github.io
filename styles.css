@@ -141,25 +141,6 @@ a:hover{
   padding:36px 0 50px;
   align-items:start;
 }
-.diamond-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.diamond-list li {
-  position: relative;
-  padding-left: 22px;
-  margin-bottom: 10px;
-}
-
-.diamond-list li::before {
-  content: "❖";
-  position: absolute;
-  left: 0;
-  color: #1f7a9a;
-  font-size: 14px;
-}
-
 .profile-card{
   background:var(--card);
   border:1px solid var(--line);
@@ -374,4 +355,24 @@ a:hover{
   .dropdown-content{
     min-width:220px;
   }
+
+  .diamond-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.diamond-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+}
+
+.diamond-list li::before {
+  content: "❖";
+  position: absolute;
+  left: 0;
+  color: #1f7a9a;
+  font-size: 14px;
+}
 }
