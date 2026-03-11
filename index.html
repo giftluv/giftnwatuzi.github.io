@@ -150,10 +150,22 @@
       top:94px;
     }
 
+    .photo-link{
+      display:block;
+      width:180px;
+      margin:0 auto 22px;
+      border-radius:50%;
+      text-decoration:none;
+    }
+
+    .photo-link:hover{
+      text-decoration:none;
+      opacity:.95;
+    }
+
     .profile-photo{
       width:180px;
       height:180px;
-      margin:0 auto 22px;
       border-radius:50%;
       overflow:hidden;
       border:4px solid #e6e6e6;
@@ -164,6 +176,12 @@
       color:#777;
       text-align:center;
       padding:12px;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .photo-link:hover .profile-photo{
+      transform:scale(1.02);
+      box-shadow:0 8px 20px rgba(0,0,0,.10);
     }
 
     .profile-photo img{
@@ -205,9 +223,22 @@
       font-size:1rem;
     }
 
+    .cv-box{
+      margin-top:24px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fafafa;
+    }
+
+    .cv-box p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.97rem;
+    }
+
     .cv-button{
       display:inline-block;
-      margin-top:22px;
       padding:12px 18px;
       border-radius:999px;
       background:var(--accent);
@@ -231,6 +262,7 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       padding:28px 30px;
+      scroll-margin-top:95px;
     }
 
     .section h2{
@@ -365,11 +397,13 @@
   <main class="container layout">
     <aside>
       <div class="profile-card">
-        <div class="profile-photo">
-          <!-- Replace with your real image -->
-          <!-- <img src="IMG_3153.jpeg" alt="Gift Aruchi Nwatuzie" /> -->
-          Add Your Photo
-        </div>
+        <a href="#top-landing" class="photo-link" aria-label="Go to top of page">
+          <div class="profile-photo">
+            <!-- Replace with your real image -->
+            <!-- <img src="gift-photo.jpg" alt="Gift Aruchi Nwatuzie" /> -->
+            Add Your Photo
+          </div>
+        </a>
 
         <h1 class="profile-name">Gift Aruchi Nwatuzie</h1>
         <div class="profile-role">Ph.D. Candidate in Computer Science</div>
@@ -381,12 +415,16 @@
           <a class="sidebar-link" href="https://researchgate.net/profile/Gift-Nwatuzie" target="_blank">📘 ResearchGate</a>
         </div>
 
-        <a class="cv-button" href="Gift_Nwatuzie_CV.pdf" target="_blank">Download CV</a>
+        <div class="cv-box">
+          <p>If you want to download a PDF copy of the CV, click here.</p>
+          <a class="cv-button" href="Gift_Nwatuzie_CV.pdf" download>Download CV (PDF)</a>
+        </div>
       </div>
     </aside>
 
     <section class="content">
-      <div class="section">
+      <!-- FIRST PAGE / LANDING CONTENT -->
+      <div class="section" id="top-landing">
         <h2>Biography</h2>
         <p>
           I am a Ph.D. Candidate in Computer Science at Kent State University. My research focuses on
@@ -411,6 +449,7 @@
         </ul>
       </div>
 
+      <!-- PUBLICATIONS -->
       <div class="section" id="publications">
         <h2>Publications</h2>
 
@@ -447,6 +486,7 @@
         </div>
       </div>
 
+      <!-- EXPERIENCE -->
       <div class="section" id="experience">
         <h2>Experience</h2>
 
@@ -486,6 +526,7 @@
         </div>
       </div>
 
+      <!-- EDUCATION -->
       <div class="section" id="education">
         <h2>Education</h2>
         <div class="entry">
@@ -502,6 +543,7 @@
         </div>
       </div>
 
+      <!-- VOLUNTEER -->
       <div class="section" id="volunteer">
         <h2>Volunteer</h2>
         <div class="entry">
@@ -510,6 +552,7 @@
         </div>
       </div>
 
+      <!-- CONTACT -->
       <div class="section" id="contact">
         <h2>Contact</h2>
         <div class="contact-grid">
@@ -535,4 +578,3 @@
   </main>
 </body>
 </html>
-
